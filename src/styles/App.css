@@ -1,0 +1,27 @@
+.side-bar{
+    width: 20%;
+}
+
+/* .header{
+    display: inline;
+} */
+
+.next{
+    display: inline-block;
+}
+
+.Calendar{
+    /* display: inline-block; */
+    height: 100%;
+    width: 80%;
+}
+
+.main-content{
+    /* display: inline-block; */
+    display: flex;
+    flex-direction: row;
+}
+
+.app{
+    height: 100vh;
+}

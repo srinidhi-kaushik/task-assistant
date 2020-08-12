@@ -1,0 +1,7 @@
+$today-highlight-bg: #c39797;
+
+.rbc-day-slot, .rbc-time-slot{
+    border-top: 0px !important;
+}
+
+@import 'react-big-calendar/lib/sass/styles';
