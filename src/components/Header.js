@@ -5,10 +5,12 @@ class Header extends Component{
     render() {
         return(
             <div className="header">
-                <h1 className="next">Task-Assist</h1>
-                <h4 className="next">Help</h4>
-                <h4 className="next">Settings</h4>
-                <h4 className="next">User</h4>
+                <h1 className="title">Task-Assist</h1>
+                <nav className="navbar">
+                    <a href="http://google.com">Help</a>
+                    <a href="http://google.com">Settings</a>
+                    <a href="http://google.com">User</a>
+                </nav>
             </div>
         )
     }

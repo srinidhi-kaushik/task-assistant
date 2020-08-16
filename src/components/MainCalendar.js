@@ -1,37 +1,25 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import '../styles/style.scss'
+import { GlobalContext } from '../context/GlobalState'
 
 const localizer = momentLocalizer(moment)
 
-class MainCalendar extends Component {
-  state = {
-    events: [
-      {
-        // start: moment().toDate(),
-        // end: moment()
-        //   .add(3, "days")
-        //   .toDate(),
-        // title: "Some title"
-      }
-    ]
-  };
+export const MainCalendar = () => {
+  const { events } = useContext(GlobalContext);
 
-  render() {
-    return (
-      <div className="Calendar">
-        <Calendar
-          localizer={localizer}
-          defaultDate={new Date()}
-          defaultView="week"
-          events={this.state.events}
-          style={{ height: "100%" }}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className="Calendar">
+      <Calendar
+        localizer={localizer}
+        defaultDate={new Date()}
+        defaultView="month"
+        events={events}
+        style={{ height: "700px" }}
+      />
+    </div>
+  )
 }
 
-export default MainCalendar;
