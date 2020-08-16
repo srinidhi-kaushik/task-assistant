@@ -22,8 +22,10 @@ export default function CreateEvent() {
   const [open, setOpen] = useState(false);
   const classes = useStyles();
   const [title, setTitle] = useState('');
-  const [startDate, setStartDate] = useState(moment().toDate());
+  const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState(moment().toDate());
+  const [startTime, setStartTime] = useState('');
+  const [endTime, setEndTime] = useState('');
 
   const { addEvent } = useContext(GlobalContext);
   
@@ -34,16 +36,13 @@ export default function CreateEvent() {
   const handleSubmit = (e) => {
     handleClose();
     e.preventDefault();
-    // console.log(startDate);
-    // console.log(moment().toDate());
-    // console.log(moment(startDate)._d);
-    // console.log(moment())
 
     const newEvent = {
-      start: moment(startDate)._d,
-      end: moment(endDate).add(1, 'days')._d,
+      start: moment(startDate + ' ' + startTime)._d,
+      end: (endDate === startDate) ? moment(endDate + ' ' + endTime)._d : moment(endDate + ' ' + endTime).add(1, 'days')._d,
       title
     }
+    console.log(newEvent.start);
     addEvent(newEvent);
   }
 
@@ -96,6 +95,8 @@ export default function CreateEvent() {
             InputLabelProps={{
                 shrink: true,
             }}
+            onChange={(e) => setStartTime(e.target.value)}
+            value={startTime}
           />
           <TextField
             autoFocus
@@ -119,6 +120,8 @@ export default function CreateEvent() {
             InputLabelProps={{
                 shrink: true,
             }}
+            onChange={(e) => setEndTime(e.target.value)}
+            value={endTime}
           />
           </div>
         </DialogContent>
