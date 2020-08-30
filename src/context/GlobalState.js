@@ -1,27 +1,21 @@
 import React, { createContext, useReducer } from 'react'
 import AppReducer from './AppReducer'
-import moment from 'moment'
+//import moment from 'moment' --> Use for test case
 
 //Initial State
 const initialState = {
     events: [
         // {
-        //     start: moment().toDate(),
-        //     end: moment().add(3, "days").toDate(),
-        //     title: "Global Event"
-        // },
-        {
-            id: 0,
-            start: moment().add(10, "days").toDate(),
-            end: moment().add(12, "days").toDate(),
-            title: "Testing 2",
-            startDate: "2020-09-09",
-            startTime: "",
-            endDate: "2020-09-11",
-            endTime: ""
-            // endDate: moment
-            //2020-08-05
-        }
+        //     //test case
+        //     id: 0,
+        //     start: moment().add(10, "days").toDate(),
+        //     end: moment().add(12, "days").toDate(),
+        //     title: "Testing",
+        //     startDate: "2020-09-09",
+        //     startTime: "",
+        //     endDate: "2020-09-11",
+        //     endTime: ""
+        // }
     ], 
     idNum: 0
 }

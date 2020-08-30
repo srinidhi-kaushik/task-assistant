@@ -27,8 +27,6 @@ export default function CreateEvent(props) {
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
 
-  //const editEvent = props.event;
-
   const { addEvent } = useContext(GlobalContext);
   let { idNum } = useContext(GlobalContext);
   
@@ -40,7 +38,6 @@ export default function CreateEvent(props) {
     handleClose();
     e.preventDefault();
     
-    //console.log(startDate)
     const newEvent = {
       id: ++idNum,
       start: moment(startDate + ' ' + startTime)._d,
@@ -68,10 +65,6 @@ export default function CreateEvent(props) {
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Create New Event</DialogTitle>
         <DialogContent>
-          {/* <DialogContentText>
-            To subscribe to this website, please enter your email address here. We will send updates
-            occasionally.
-          </DialogContentText> */}
           <div>
             <TextField
               autoFocus
@@ -144,7 +137,6 @@ export default function CreateEvent(props) {
           </Button>
         </DialogActions>
       </Dialog>
-
     </div>
   );
 }

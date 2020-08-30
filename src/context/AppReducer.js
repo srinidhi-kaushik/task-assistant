@@ -14,8 +14,3 @@ export default (state, action) => {
             return state;
     }
 }
-
-// return {
-//     ...state,
-//     transactions: state.transactions.filter(transaction => transaction.id !== action.payload)
-//   }

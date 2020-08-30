@@ -4,7 +4,6 @@ import moment from 'moment'
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import '../styles/style.scss'
 import { GlobalContext } from '../context/GlobalState'
-
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -37,23 +36,17 @@ export const MainCalendar = () => {
 
   const handleClickOpen = (currentEvent) => {
     setEvent(currentEvent);
-    //editEvent = currentEvent
     setTitle(currentEvent.title)
     setStartDate(currentEvent.startDate)
     setStartTime(currentEvent.startTime)
     setEndDate(currentEvent.endDate)
     setEndTime(currentEvent.endTime)
     setOpen(true);
-
-    // console.log('Events')
-    // console.log(events)
-    // console.log('1', editEvent)
-    // console.log(editEvent.title)
   };
 
   const handleSave = (e) => {
     e.preventDefault()
-    handleClose();
+    handleClose()
     deleteEvent(editEvent.id)
     addEvent({ 
       id: editEvent.id,
@@ -65,25 +58,13 @@ export const MainCalendar = () => {
       start: moment(startDate + ' ' + startTime)._d,
       end: (endDate === startDate) ? moment(endDate + ' ' + endTime)._d : moment(endDate + ' ' + endTime).add(1, 'days')._d
     })
-
-    //console.log(event.id)
-    
-    //deleteEvent(event.id);
-
-    // event.start = moment(startDate + ' ' + startTime)._d;
-    // event.end =  (endDate === startDate) ? moment(endDate + ' ' + endTime)._d : moment(endDate + ' ' + endTime).add(1, 'days')._d;
-    // event.title = title;
-    
-    //addEvent(event);
-    //console.log(event)
-    //console.log(events)
   }
+
   const handleDelete = () => {
     deleteEvent(editEvent.id)
     handleClose()
   }
   const handleClose = () => {
-    //console.log('handle clsoe', editEvent)
     setOpen(false);
   };
   
@@ -97,7 +78,6 @@ export const MainCalendar = () => {
           style={{ height: "700px" }}
           onSelectEvent={(event) => {
             handleClickOpen(event);
-            //console.log(event)
           }}
         />
         
@@ -113,10 +93,8 @@ export const MainCalendar = () => {
                 fullWidth
                 defaultValue={title}
                 onChange={(e) => setTitle(e.target.value)}
-                // value={title}
               />
             </div>
-            {/* className={classes.root} */}
             <div className={classes.root}>
               <TextField
                 autoFocus
@@ -128,7 +106,6 @@ export const MainCalendar = () => {
                     shrink: true,
                 }}
                 onChange={(e) => setStartDate(e.target.value)}
-                // value={startDate}
                 defaultValue={startDate}
               />
               <TextField
@@ -183,7 +160,5 @@ export const MainCalendar = () => {
           </DialogActions>
         </Dialog> *
       </div>
-    
   )
 }
-
