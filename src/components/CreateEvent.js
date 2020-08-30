@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CreateEvent() {
+export default function CreateEvent(props) {
   const [open, setOpen] = useState(false);
   const classes = useStyles();
   const [title, setTitle] = useState('');
@@ -27,7 +27,10 @@ export default function CreateEvent() {
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
 
+  //const editEvent = props.event;
+
   const { addEvent } = useContext(GlobalContext);
+  let { idNum } = useContext(GlobalContext);
   
   const handleClickOpen = () => {
     setOpen(true);
@@ -36,12 +39,19 @@ export default function CreateEvent() {
   const handleSubmit = (e) => {
     handleClose();
     e.preventDefault();
-
+    
+    //console.log(startDate)
     const newEvent = {
+      id: ++idNum,
       start: moment(startDate + ' ' + startTime)._d,
       end: (endDate === startDate) ? moment(endDate + ' ' + endTime)._d : moment(endDate + ' ' + endTime).add(1, 'days')._d,
-      title
+      title,
+      startDate,
+      startTime,
+      endDate,
+      endTime
     }
+
     console.log(newEvent.start);
     addEvent(newEvent);
   }
@@ -134,6 +144,7 @@ export default function CreateEvent() {
           </Button>
         </DialogActions>
       </Dialog>
+
     </div>
   );
 }
